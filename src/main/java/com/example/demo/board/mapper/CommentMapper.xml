@@ -3,7 +3,7 @@
  
 <mapper namespace="com.example.demo.board.mapper.CommentMapper">
 	
-	<select id="commentCOunt" resultType="int">
+	<select id="commentCount" resultType="int">
 		SELECT
 			COUNT(*)
 		FROM comment
@@ -13,6 +13,7 @@
 		SELECT
 			*
 		FROM comment
+		WHERE bno = #{bno}
 	</select>
 	
 	<insert id="commentInsert" parameterType="com.example.demo.board.domain.CommentVO">
@@ -35,5 +36,12 @@
 			comment
 		WHERE
 			cno = #{cno}
+	</delete>
+	
+	<delete id="commentAllDelete" parameterType="int">
+		DELETE FROM
+			comment
+		WHERE
+			bno = #{bno}
 	</delete>
 </mapper>

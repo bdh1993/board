@@ -23,9 +23,9 @@ public class CommentController {
 	
 	@RequestMapping("/list") //댓글 리스트
 	@ResponseBody
-	private List<CommentVO> mCommentServiceList(Model model) throws Exception {
+	private List<CommentVO> mCommentServiceList(Model model, int bno) throws Exception {
 		
-		return mCommentService.commentListService();
+		return mCommentService.commentListService(bno);
 	}
 	
 	@RequestMapping("/insert") //댓글 작성

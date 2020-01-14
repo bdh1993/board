@@ -13,7 +13,7 @@ public interface CommentMapper {
 	public int commentCount() throws Exception;
 	
 	//댓글 목록
-	public List<CommentVO> commentList() throws Exception;
+	public List<CommentVO> commentList(int bno) throws Exception;
 	
 	//댓글 작성
 	public int commentInsert(CommentVO comment) throws Exception;
@@ -23,4 +23,7 @@ public interface CommentMapper {
 	
 	//댓글 삭제
 	public int commentDelete(int cno) throws Exception;
+
+	//댓글 전체삭제(게시글 삭제시)
+	public int commentAllDelete(int bno) throws Exception;
 }

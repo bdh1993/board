@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.board.domain.BoardVO;
 import com.example.demo.board.service.BoardService;
+import com.example.demo.board.service.CommentService;
 
 @Controller
 public class BoardController {
 
 	@Resource(name="com.example.demo.board.service.BoardService")
 	BoardService mBoardService;
+	
+	@Resource(name="com.example.demo.board.service.CommentService")
+	CommentService mCommentService;
 	
 	@RequestMapping("/list") //게시판 리스트 화면 호출
 	private String boardList(Model model) throws Exception {
@@ -82,11 +86,17 @@ public class BoardController {
 	private String boardDelete(@PathVariable int bno) throws Exception {
 		
 		mBoardService.boardDeleteService(bno);
+		mCommentService.commentAllDeleteService(bno); //댓글 전체 삭제 메소드
+		/*
+		 * @Resource(name="com.example.demo.board.service.CommentService")
+		 * CommentService mCommentService;
+		 * 
+		 * CommentMapper.java 인터페이스
+		 * CommentService.java 인터페이스 구현
+		 * CommentMapper.xml 쿼리문
+		 */ 
+		
 		
 		return "redirect:/list";
 	}
-	
-		
-	
-	
 }

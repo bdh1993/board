@@ -15,9 +15,9 @@ public class CommentService {
 	@Resource(name="com.example.demo.board.mapper.CommentMapper")
 	CommentMapper mCommentMapper;
 	
-	public List<CommentVO> commentListService() throws Exception {
+	public List<CommentVO> commentListService(int bno) throws Exception {
 		
-		return mCommentMapper.commentList();
+		return mCommentMapper.commentList(bno);
 	}
 	
 	public int commentInsertService(CommentVO comment) throws Exception {
@@ -33,5 +33,10 @@ public class CommentService {
 	public int commentDeleteService(int cno) throws Exception {
 		
 		return mCommentMapper.commentDelete(cno);
+	}
+	
+	public int commentAllDeleteService(int bno) throws Exception {
+		
+		return mCommentMapper.commentAllDelete(bno);
 	}
 }
